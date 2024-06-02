@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Centrex\LaravelModelNote\Tests;
 
+use Centrex\LaravelModelNote\LaravelModelNoteServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Centrex\LaravelModelNote\LaravelModelNoteServiceProvider;
 
 class TestCase extends Orchestra
 {
