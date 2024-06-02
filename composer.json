@@ -1,18 +1,18 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "centrex/laravel-model-note",
+    "description": "This package add note to eloquent model",
     "keywords": [
-        ":vendor_name",
+        "centrex",
         "laravel",
-        ":package_slug"
+        "laravel-model-note"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/centrex/laravel-model-note",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "rochi88",
+            "email": "raisul.me@gmail.com",
             "role": "Developer"
         }
     ],
@@ -37,19 +37,19 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Centrex\\LaravelModelNote\\": "src/",
+            "Centrex\\LaravelModelNote\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Centrex\\LaravelModelNote\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-model-note --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -85,10 +85,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Centrex\\LaravelModelNote\\LaravelModelNoteServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelModelNote": "Centrex\\LaravelModelNote\\Facades\\LaravelModelNote"
             }
         }
     },
