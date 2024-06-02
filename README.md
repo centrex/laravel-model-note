@@ -31,24 +31,11 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-model-note-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 You can publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-model-note-migrations"
 php artisan migrate
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-model-note-views"
 ```
 
 ## Usage
