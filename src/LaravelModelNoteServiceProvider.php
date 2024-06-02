@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Centrex\LaravelModelNote;
 
+use Centrex\LaravelModelNote\Exceptions\InvalidNoteModel;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelModelNoteServiceProvider extends ServiceProvider
@@ -11,7 +12,7 @@ class LaravelModelNoteServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*
          * Optional methods to load your package assets
@@ -27,9 +28,9 @@ class LaravelModelNoteServiceProvider extends ServiceProvider
             ], 'laravel-model-note-config');
 
             // Publishing the migrations.
-            /*$this->publishes([
-                __DIR__.'/../database/migrations/' => database_path('migrations')
-            ], 'laravel-model-note-migrations');*/
+            $this->publishes([
+                __DIR__ . '/../database/migrations/' => database_path('migrations'),
+            ], 'laravel-model-note-migrations');
 
             // Publishing the views.
             /*$this->publishes([
@@ -49,19 +50,25 @@ class LaravelModelNoteServiceProvider extends ServiceProvider
             // Registering package commands.
             // $this->commands([]);
         }
+
+        $this->guardAgainstInvalidNoteModel();
     }
 
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-model-note');
+    }
 
-        // Register the main class to use with the facade
-        $this->app->singleton('laravel-model-note', function () {
-            return new LaravelModelNote();
-        });
+    public function guardAgainstInvalidNoteModel(): void
+    {
+        $modelClassName = config('laravel-model-note.note_model');
+
+        if (! is_a($modelClassName, ModelNote::class, true)) {
+            throw InvalidNoteModel::create($modelClassName);
+        }
     }
 }

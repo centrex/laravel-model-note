@@ -13,12 +13,16 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('laravel_model_note_table', function (Blueprint $table) {
+        Schema::create('model_notes', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->text('text');
+            $table->string('tag')->nullable();
+            $table->boolean('is_private')->default(0);
+            $table->unsignedBigInteger('user_id');
+            $table->morphs('model');
             $table->timestamps();
+
+            $table->index(['user_id', 'model_id', 'model_type']);
         });
     }
 
@@ -27,6 +31,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('laravel_model_note_table');
+        Schema::dropIfExists('model_notes');
     }
 };
