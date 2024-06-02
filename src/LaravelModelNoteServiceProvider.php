@@ -67,7 +67,7 @@ class LaravelModelNoteServiceProvider extends ServiceProvider
     {
         $modelClassName = config('laravel-model-note.note_model');
 
-        if (! is_a($modelClassName, ModelNote::class, true)) {
+        if (!is_a($modelClassName, ModelNote::class, true)) {
             throw InvalidNoteModel::create($modelClassName);
         }
     }
