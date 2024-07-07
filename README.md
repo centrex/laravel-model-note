@@ -201,6 +201,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [rochi88](https://github.com/centrex)
+- [laravel-model-note](https://github.com/tmsllc/laravel-model-note)
 - [All Contributors](../../contributors)
 
 ## License

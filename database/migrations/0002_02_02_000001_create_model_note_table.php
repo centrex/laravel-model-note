@@ -18,7 +18,7 @@ return new class() extends Migration
             $table->text('text');
             $table->string('tag')->nullable();
             $table->boolean('is_private')->default(0);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->morphs('model');
             $table->timestamps();
 
