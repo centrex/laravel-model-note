@@ -26,7 +26,7 @@ trait HasNotes
             'text'       => $text,
             'tag'        => $tag,
             'is_private' => $is_private,
-            'user_id'    => auth()->user()->id,
+            'user_id'    => isset(auth()->user()->id) ?? null,
         ]);
 
         return $this;
