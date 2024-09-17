@@ -13,7 +13,10 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('model_notes', function (Blueprint $table) {
+
+        $connection = config('laravel-model-note.drivers.database.connection', config('database.default'));
+
+        Schema::connection($connection)->create('model_notes', function (Blueprint $table) {
             $table->id();
             $table->text('text');
             $table->string('tag')->nullable();
@@ -31,6 +34,8 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('model_notes');
+        $connection = config('laravel-model-note.drivers.database.connection', config('database.default'));
+
+        Schema::connection($connection)->dropIfExists('model_notes');
     }
 };

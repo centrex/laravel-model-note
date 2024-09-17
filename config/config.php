@@ -18,4 +18,20 @@ return [
      */
     'model_primary_key_attribute' => 'model_id',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Database Driver Configurations
+    |--------------------------------------------------------------------------
+    |
+    | Available database drivers
+    |
+    */
+
+    'drivers' => [
+        'database' => [
+            // 'connection' => 'example',
+            'connection' => null,
+        ],
+    ],
+
 ];
