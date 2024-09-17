@@ -13,7 +13,6 @@ return new class() extends Migration
      */
     public function up(): void
     {
-
         $connection = config('laravel-model-note.drivers.database.connection', config('database.default'));
 
         Schema::connection($connection)->create('model_notes', function (Blueprint $table) {
