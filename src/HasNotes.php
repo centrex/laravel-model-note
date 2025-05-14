@@ -20,22 +20,22 @@ trait HasNotes
         return $this->lastNote();
     }
 
-    public function addNote(string $text, ?bool $is_private = false, ?string $tag = null): self
+    public function addNote(string $note, ?bool $is_private = false, ?string $tag = null, ?int $user_id = null): self
     {
         $this->notes()->create([
-            'note'       => $text,
+            'note'       => $note,
             'tag'        => $tag,
             'is_private' => $is_private,
-            'user_id'    => isset(auth()->user()->id) ?? null,
+            'user_id'    => $user_id,
         ]);
 
         return $this;
     }
 
-    public function addPrivateNote(string $text, ?string $tag = null): self
+    public function addPrivateNote(string $note, ?string $tag = null): self
     {
         $this->notes()->create([
-            'note'       => $text,
+            'note'       => $note,
             'tag'        => $tag,
             'is_private' => true,
             'user_id'    => auth()->user()->id,
@@ -112,7 +112,7 @@ trait HasNotes
 
     public function getNoteAttribute(): string
     {
-        return (string) optional($this->lastNote())->text;
+        return (string) optional($this->lastNote())->note;
     }
 
     protected function getNoteTableName(): string
