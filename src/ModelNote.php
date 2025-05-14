@@ -33,8 +33,8 @@ class ModelNote extends Model
         return (string) $this->note;
     }
 
-    public function getTimeAgoAttribute() 
+    public function getTimeAgoAttribute()
     {
-        return $this->created_at? $this->created_at->diffForHumans() : '';
+        return $this->created_at ? $this->created_at->diffForHumans() : '';
     }
 }

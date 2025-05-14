@@ -6,11 +6,12 @@ namespace Centrex\LaravelModelNote\Events;
 
 use Centrex\LaravelModelNote\ModelNote;
 
-class NoteAdded {
-
+class NoteAdded
+{
     public $note;
 
-    public function __construct(ModelNote $note) {
+    public function __construct(ModelNote $note)
+    {
         $this->note = $note;
     }
 }
