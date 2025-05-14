@@ -21,7 +21,7 @@ return new class() extends Migration
             $table->string('tag')->default('note');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->boolean('is_private')->default(0);
-            $table->text('text');
+            $table->text('note')->nullable();
             $table->timestamps();
 
             $table->index(['user_id', 'model_id', 'model_type']);

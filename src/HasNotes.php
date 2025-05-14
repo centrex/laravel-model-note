@@ -23,7 +23,7 @@ trait HasNotes
     public function addNote(string $text, ?bool $is_private = false, ?string $tag = null): self
     {
         $this->notes()->create([
-            'text'       => $text,
+            'note'       => $text,
             'tag'        => $tag,
             'is_private' => $is_private,
             'user_id'    => isset(auth()->user()->id) ?? null,
@@ -35,7 +35,7 @@ trait HasNotes
     public function addPrivateNote(string $text, ?string $tag = null): self
     {
         $this->notes()->create([
-            'text'       => $text,
+            'note'       => $text,
             'tag'        => $tag,
             'is_private' => true,
             'user_id'    => auth()->user()->id,

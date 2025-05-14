@@ -30,6 +30,11 @@ class ModelNote extends Model
 
     public function __toString(): string
     {
-        return (string) $this->name;
+        return (string) $this->note;
+    }
+
+    public function getTimeAgoAttribute() 
+    {
+        return $this->created_at? $this->created_at->diffForHumans() : '';
     }
 }
