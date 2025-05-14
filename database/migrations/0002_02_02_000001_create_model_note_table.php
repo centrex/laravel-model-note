@@ -17,11 +17,11 @@ return new class() extends Migration
 
         Schema::connection($connection)->create('model_notes', function (Blueprint $table) {
             $table->id();
-            $table->text('text');
-            $table->string('tag')->nullable();
-            $table->boolean('is_private')->default(0);
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->morphs('model');
+            $table->string('tag')->default('user');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->boolean('is_private')->default(0);
+            $table->text('text');
             $table->timestamps();
 
             $table->index(['user_id', 'model_id', 'model_type']);
