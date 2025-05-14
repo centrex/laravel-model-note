@@ -18,7 +18,7 @@ return new class() extends Migration
         Schema::connection($connection)->create('model_notes', function (Blueprint $table) {
             $table->id();
             $table->morphs('model');
-            $table->string('tag')->default('user');
+            $table->string('tag')->default('note');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->boolean('is_private')->default(0);
             $table->text('text');
