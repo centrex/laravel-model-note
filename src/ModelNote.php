@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class ModelNote extends Model
 {
-    
     /**
      * The attributes that aren't mass assignable.
      *

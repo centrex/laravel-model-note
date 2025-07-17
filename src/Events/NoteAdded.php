@@ -9,7 +9,7 @@ use Centrex\LaravelModelNote\ModelNote;
 class NoteAdded
 {
     /**
-     * @var \Centrex\LaravelModelNote\ModelNote
+     * @var ModelNote
      */
     public $note;
 
