@@ -56,10 +56,11 @@ class YourEloquentModel extends Model
 You can add a new note like this:
 
 ```php
+// Add a public note
 $model->addNote('whatever you like');
+// or with tag
+$user->addNote('Customer called about billing issue', false, 'support');
 ```
-
-### Add a private note
 
 You can add a new private note which can be seen only be you like this:
 
@@ -68,7 +69,6 @@ $model->addNote('whatever you like' , true);
 
 //or alternatively
 $model->addPrivateNote('whatever you like');
-
 ```
 
 ### Add a note with tag
@@ -129,6 +129,18 @@ $all_notes = $model->privateNotes("tag1");
 $all_notes = $model->privateNotes("tag1" , "tag2");
 ```
 
+```php
+// Get all private notes
+$privateNotes = ModelNote::private()->get();
+
+// Get public notes with specific tag
+$publicTaggedNotes = ModelNote::public()->withTag('feedback')->get();
+
+// Get time ago for a note
+$note = ModelNote::first();
+echo $note->time_ago; // "2 hours ago"
+```
+
 ### Delete a note from model
 
 You can delete any note that has been added on the model by id at any time by using the `deleteNote` method:
@@ -161,6 +173,24 @@ Delete all notes from model:
 
 ```php
 $model->deleteAllNotes();
+```
+
+### Error handling
+```php
+try {
+    // Validate model class
+    if (!is_subclass_of($modelClass, ModelNote::class)) {
+        throw InvalidNoteModel::create($modelClass);
+    }
+} catch (InvalidNoteModel $e) {
+    // Access additional context
+    $context = $e->context();
+    
+    // Log full error details
+    logger()->error($e->getMessage(), $context);
+    
+    // Handle exception appropriately
+}
 ```
 
 ## Testing

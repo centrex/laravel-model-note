@@ -8,6 +8,9 @@ use Centrex\LaravelModelNote\ModelNote;
 
 class NoteAdded
 {
+    /**
+     * @var \Centrex\LaravelModelNote\ModelNote
+     */
     public $note;
 
     public function __construct(ModelNote $note)
