@@ -48,13 +48,13 @@ return new class() extends Migration
                 ->comment('User who created the note');
 
             // Recommended foreign key (if users table exists)
-            if (config('laravel-model-note.partitioning_enabled')){
-            $table->unsignedBigInteger('user_id')->nullable()->index();
+            if (config('laravel-model-note.partitioning_enabled')) {
+                $table->unsignedBigInteger('user_id')->nullable()->index();
             } else {
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->nullOnDelete();
+                $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->nullOnDelete();
             }
 
             $table->boolean('is_private')->default(false);
@@ -93,7 +93,7 @@ return new class() extends Migration
         });
 
         // Recommended for large tables to maintain performance
-        if (config('laravel-model-note.partitioning_enabled')){
+        if (config('laravel-model-note.partitioning_enabled')) {
             DB::statement('ALTER TABLE model_notes PARTITION BY HASH(user_id) PARTITIONS 10');
         }
     }
@@ -103,7 +103,7 @@ return new class() extends Migration
         Schema::connection($this->getConnection())->dropIfExists('model_notes');
 
         // Recommended if using partitioning
-        if (config('laravel-model-note.partitioning_enabled')){
+        if (config('laravel-model-note.partitioning_enabled')) {
             DB::statement('ALTER TABLE model_notes REMOVE PARTITIONING');
         }
     }
