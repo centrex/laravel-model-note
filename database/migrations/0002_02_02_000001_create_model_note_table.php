@@ -20,7 +20,7 @@ return new class() extends Migration
     /**
      * Get the database connection name.
      */
-    protected function getConnection(): string
+    public function getConnection(): string
     {
         return config('laravel-model-note.drivers.database.connection')
             ?? config('database.default');
