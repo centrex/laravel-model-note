@@ -69,7 +69,7 @@ return new class() extends Migration
             $table->timestamps(6);
 
             // Recommended for data recovery
-            // $table->softDeletes('deleted_at', 6);
+            $table->softDeletes('deleted_at', 6);
 
             // Recommended indexes for common query patterns
             $table->index(
