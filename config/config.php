@@ -18,6 +18,8 @@ return [
      */
     'model_primary_key_attribute' => 'model_id',
 
+    'partitioning_enabled' => false,
+
     /*
     |--------------------------------------------------------------------------
     | Database Driver Configurations
